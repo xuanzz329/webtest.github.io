@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brew Assasino - Specialty Coffee</title>
+    <style>
+        body {
+            background-color: #fff0e6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+		.hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('https://images.unsplash.com/photo-1511920170033-f8396924c348') center/cover no-repeat;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .navbar {
+            background-color: #4b2c20;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links li {
+            padding: 0;
+        }
+        
+        .nav-links a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 20px 15px;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background-color: #5e3b2e;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            color: #5e3b2e;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: #5e3b2e;
+            margin: 10px auto;
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 60px;
+        }
+        
+        .feature {
+            flex: 0 0 calc(33.33% - 20px);
+            margin-bottom: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .feature-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .feature-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .feature:hover .feature-img img {
+            transform: scale(1.1);
+        }
+        
+        .feature-content {
+            padding: 20px;
+        }
+        
+        .feature h3 {
+            color: #5e3b2e;
+            margin-top: 0;
+        }
+        
+        .cta {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/400') center/cover no-repeat;
+            text-align: center;
+            padding: 80px 20px;
+            color: white;
+            margin-bottom: 60px;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #5e3b2e;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #4b2c20;
+            transform: translateY(-3px);
+        }
+        
+        .footer {
+            background-color: #4b2c20;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: #fff;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        @media (max-width: 768px) {
+            .feature {
+                flex: 0 0 calc(50% - 15px);
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .feature {
+                flex: 0 0 100%;
+            }
+            
+            .navbar {
+                position: static;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+	<header class="hero">
+        <h1>BREW ASSASINO</h1> 
+        <p>Where every sip is an experience to die for ☕</p>
+    </header>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="https://images.cults3d.com/ZV7yq9iv_vyJKQgOP6vkI_aFErg=/516x516/filters:no_upscale():format(webp)/https://fbi.cults3d.com/uploaders/25344900/illustration-file/e26674e8-992a-4674-8536-3e12944a5c7e/Captura-de-pantalla-2025-04-10-111100.png" alt="Brew Assasino Logo">
+                <span class="logo-text">Brew Assasino</span>
+            </div>
+            <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="product.html">Product</a></li>
+    <li><a href="package.html">Packages</a></li>
+    <li><a href="contact.php">Contact Us</a></li>
+    <li><a href="login.php">Admin Login</a></li>
+</ul>
+
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <h2 class="section-title">Welcome to Brew Assasino</h2>
+        <p>At <b>Brew Assasino</b>, we serve vibes with every cup. Our café blends bold flavors with cozy charm, bringing you handcrafted drinks and delectable bites that make mornings worth waking up for. Come crush your cravings—one sip at a time. </p>
+        
+        <h2 class="section-title">Our Specialty</h2>
+        <div class="features">
+            <div class="feature">
+                <div class="feature-img">
+                    <img src="https://chargerbulletin.com/wp-content/uploads/2017/04/istock_000043355764small.jpg" alt="Premium Coffee">
+                </div>
+                <div class="feature-content">
+                    <h3>Premium Coffee</h3>
+                    <p>Sourced from the finest beans around the world, our coffee is roasted to perfection to deliver a rich, aromatic experience.</p>
+                </div>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-img">
+                    <img src="https://www.tallboxdesign.com/wp-content/uploads/2024/09/NEW_JJJBP_RUA54SHG_58IJXDOO3W.webp" alt="Cozy Atmosphere">
+                </div>
+                <div class="feature-content">
+                    <h3>Cozy Atmosphere</h3>
+                    <p>Our carefully designed space offers the perfect ambiance for working, socializing, or simply enjoying a moment of tranquility.</p>
+                </div>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-img">
+                    <img src="https://eatsouthbank.com.au/carbon/assets/2023/10/CestDugateau-52-of-59-web.jpg" alt="Delicious Treats">
+                </div>
+                <div class="feature-content">
+                    <h3>Delicious Treats</h3>
+                    <p>Pair your coffee with our selection of freshly baked pastries and savory snacks made from locally sourced ingredients.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <section class="cta">
+        <h2>Ready to experience coffee like never before?</h2>
+        <p>Visit us today or order online for a taste that will assassinate your taste buds (in the best way possible)!</p>
+        <a href="#" class="btn">Order Now</a>
+    </section>
+    
+    <div class="container">
+        <h2 class="section-title">Our Story</h2>
+        <p>Founded in 2025, Brew Assasino was born from a passion for exceptional coffee and a desire to create a space where coffee lovers could indulge in the finest brews. Our name, a playful nod to the "killer" taste of our coffee, reflects our commitment to delivering an unforgettable coffee experience.</p>
+        <p>Each cup we serve is crafted with precision and care, using techniques perfected over years of dedication to the art of coffee making. We believe that great coffee has the power to transform moments, spark conversations, and create lasting memories.</p>
+    </div>
+    
+    <footer class="footer">
+        <div class="social-links">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+        <p>123 Coffee Street, Beanville | Phone: (123) 456-7890 | Email: info@brewassasino.com</p>
+        <p class="copyright">&copy; 2025 Brew Assasino. All rights reserved.</p>
+    </footer>
+</body>
+</html>
